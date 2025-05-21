@@ -32,7 +32,7 @@ int stateSW1 = LOW;
 
 long n = 0; //n represents value displayed on the LED display. When n=0,0000 is displayed
 int x = 100; //not sure what this is yet?
-int del = 1; //used for fine tuning the display code
+int del = 2; //used for fine tuning the display code
 
 int count = 0; //This goes up by 1 every 0.1 second? Not sure if that's pertinent here yet
 
@@ -58,12 +58,14 @@ void setup() {
  
 
   stateSW1 = digitalRead(SW1);
+
+ // Serial.begin(9600);
  
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+ // Serial.write("alive");
   clearLEDs();//clear the 7-segment display screen
   pickDigit(0);//Light up 7-segment display d1
   pickNumber((n/1000));// get the value of thousand
@@ -279,7 +281,7 @@ void nine() //the 7-segment led display 9
   digitalWrite(pinA, HIGH);
   digitalWrite(pinB, HIGH);
   digitalWrite(pinC, HIGH);
-  digitalWrite(pinD, HIGH);
+  digitalWrite(pinD, LOW);
   digitalWrite(pinE, LOW);
   digitalWrite(pinF, HIGH);
   digitalWrite(pinG, HIGH);
